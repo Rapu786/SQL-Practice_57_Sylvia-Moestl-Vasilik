@@ -94,3 +94,7 @@ SELECT OrderID, ProductID, UnitPrice,Quantity, (UnitPrice*Quantity) AS TotalPric
 FROM OrderDetails
 Order BY OrderID,ProductID;
 
+--14.How many customers ?
+--Do not rely on getting the entire records i.e *
+
+SELECT count(customerID) as TotalCustomers from Customers;
