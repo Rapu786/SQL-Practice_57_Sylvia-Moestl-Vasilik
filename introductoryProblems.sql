@@ -68,3 +68,15 @@ WHERE ShipCountry In ('Brazil','Mexico','Argentina','Venezuela');
 SELECT FirstName,LastName,Title,BirthDate
 FROM Employees
 Order BY BirthDate ASC ;
+
+--11.Showing only the Date with a DateTimeField
+-- Same as above, but the birthdate column shouldn't have time only date
+-- Convert a datetime column to a date column
+
+SELECT FirstName,LastName,Title,CAST(BirthDate AS DATE) AS BirthDate
+FROM Employees
+Order BY BirthDate ASC ;
+
+SELECT FirstName,LastName,Title,CONVERT(DATE,BirthDate) AS BirthDate
+FROM Employees
+Order BY BirthDate ASC ;
