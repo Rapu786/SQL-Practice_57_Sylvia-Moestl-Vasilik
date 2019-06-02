@@ -25,7 +25,24 @@ AND  COUNTRY = 'USA';
 --5. Orders placed by specific Employee ID
 SELECT OrderID, OrderDate 
 FROM Orders
-where EmployeeID = 5;
+WHERE EmployeeID = 5;
+
+--6.Suppliers and ContactTitles
+SELECT SupplierID,ContactName,ContactTitle
+FROM Suppliers
+WHERE ContactTitle  
+NOT IN 
+(SELECT ContactTitle FROM Suppliers
+Where ContactTitle ='Marketing Manager');
+
+SELECT SupplierID,ContactName,ContactTitle
+FROM Suppliers
+WHERE ContactTitle <> 'Marketing Manager';
+
+SELECT SupplierID,ContactName,ContactTitle
+FROM Suppliers
+WHERE ContactTitle != 'Marketing Manager';
+
 
 
 
