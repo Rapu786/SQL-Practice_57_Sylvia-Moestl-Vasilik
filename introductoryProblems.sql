@@ -14,3 +14,11 @@ SELECT categoryName, Description FROM categories;
 SELECT FirstName, LastName, HireDate 
 FROM Employees
 WHERE Title = 'Sales Representative'; 
+
+--4.Sales Representatives in the United States
+
+SELECT FirstName, LastName, HireDate 
+FROM Employees
+WHERE Title = 'Sales Representative'
+AND  COUNTRY = 'USA'
+
