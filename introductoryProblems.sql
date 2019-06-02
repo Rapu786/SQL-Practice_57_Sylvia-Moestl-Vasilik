@@ -55,4 +55,12 @@ SELECT OrderID,CustomerID,ShipCountry
 FROM Orders
 WHERE ShipCountry='France' or ShipCountry='Belgium';
 
+SELECT OrderID,CustomerID,ShipCountry
+FROM Orders
+WHERE ShipCountry In ('France','Belgium');
+
+-- 9.Orders shipping to any country in Latin America
+SELECT OrderID,CustomerID,ShipCountry
+FROM Orders
+WHERE ShipCountry In ('Brazil','Mexico','Argentina','Venezuela');
 
