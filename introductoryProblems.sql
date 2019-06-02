@@ -121,8 +121,18 @@ Order By TotalContacttitle Desc;
 SELECT a.ProductID, a.ProductName,b.CompanyName
 FROM Products a
 Inner Join Suppliers b
-on a.SupplierId = b.SupplierId
+ON a.SupplierId = b.SupplierId
 ORDER BY a.ProductID;
+
+--19.Orders and the shipper that was used
+
+SELECT a.OrderID,CAST(a.OrderDate AS DATE) AS OrderDate,b.CompanyName AS shipper
+FROM Orders a
+Inner Join shippers b
+ON a.ShipVia = b.ShipperID
+WHERE a.OrderID< 10270
+ORDER BY a.OrderID;
+
 
 
 
