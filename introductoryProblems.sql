@@ -3,4 +3,8 @@ Go
 
 --1.Which shippers do we have ?
 
-select * from shippers;
+SELECT * FROM shippers;
+
+--2. Certain fields  from categories 
+
+SELECT categoryName, Description FROM categories 
