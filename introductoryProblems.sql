@@ -116,5 +116,13 @@ FROM Customers
 GROUP BY ContactTitle
 Order By TotalContacttitle Desc;
 
+--18.Products with associated supplier names
+
+SELECT a.ProductID, a.ProductName,b.CompanyName
+FROM Products a
+Inner Join Suppliers b
+on a.SupplierId = b.SupplierId
+ORDER BY a.ProductID;
+
 
 
