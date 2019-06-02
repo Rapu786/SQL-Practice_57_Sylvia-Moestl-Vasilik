@@ -108,3 +108,13 @@ FROM Orders;
 
 SELECT Country from Customers
 Group BY Country;
+
+--17.Contact titles for customers
+
+SELECT ContactTitle, Count(ContactTitle) AS TotalContacttitle
+FROM Customers
+GROUP BY ContactTitle
+Order By TotalContacttitle Desc;
+
+
+
