@@ -104,3 +104,7 @@ SELECT count(customerID) as TotalCustomers from Customers;
 SELECT Min(OrderDate) AS FirstOrder
 FROM Orders;
 
+--16.Countries where there are customers
+
+SELECT Country from Customers
+Group BY Country;
