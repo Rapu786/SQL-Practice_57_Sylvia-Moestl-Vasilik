@@ -80,3 +80,7 @@ Order BY BirthDate ASC ;
 SELECT FirstName,LastName,Title,CONVERT(DATE,BirthDate) AS BirthDate
 FROM Employees
 Order BY BirthDate ASC ;
+
+--12.Employees full Name
+SELECT CONCAT(FirstName,' ',LastName) AS FullName
+FROM Employees;
