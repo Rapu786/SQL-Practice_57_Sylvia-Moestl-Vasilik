@@ -64,3 +64,7 @@ SELECT OrderID,CustomerID,ShipCountry
 FROM Orders
 WHERE ShipCountry In ('Brazil','Mexico','Argentina','Venezuela');
 
+--10.Employees, in order of age
+SELECT FirstName,LastName,Title,BirthDate
+FROM Employees
+Order BY BirthDate ASC ;
