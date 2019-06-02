@@ -84,3 +84,13 @@ Order BY BirthDate ASC ;
 --12.Employees full Name
 SELECT CONCAT(FirstName,' ',LastName) AS FullName
 FROM Employees;
+
+--13.OrderDetails amount per line item
+--In the orderDetails table, we havefileds UnitePrice and Quantity. 
+--Create a new field, TotalPrice, that multiple these two together.
+--In addition, show the orderID,ProductID, UnitPrice, and Quantity, order by OrderID and ProductID
+
+SELECT OrderID, ProductID, UnitPrice,Quantity, (UnitPrice*Quantity) AS TotalPrice
+FROM OrderDetails
+Order BY OrderID,ProductID;
+
