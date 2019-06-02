@@ -98,3 +98,9 @@ Order BY OrderID,ProductID;
 --Do not rely on getting the entire records i.e *
 
 SELECT count(customerID) as TotalCustomers from Customers;
+
+--15.When was the first order ?
+
+SELECT Min(OrderDate) AS FirstOrder
+FROM Orders;
+
