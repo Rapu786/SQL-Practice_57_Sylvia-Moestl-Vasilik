@@ -28,4 +28,15 @@ FROM Products
 WHERE UnitsInStock <= ReorderLevel
 Order BY ProductID;
 
+--23.Prodcuts that need reordering,continued
+--Now incorporate these fields -  UnitsInStock, ReoroderLevel,UnitsOnOrder,Discounted into calculation
+-- We define products that need reodering as
+-- UnitsInStock plus UnitsOnOrder are less than or equal to ReorderLevel
+-- AND the discontinued flag is false(0).
+
+SELECT ProductID, ProductName,UnitsInStock,ReorderLevel,UnitsOnOrder,Discontinued
+FROM Products
+WHERE (UnitsInStock+UnitsOnOrder) <= ReorderLevel
+AND Discontinued=0;
+
 
