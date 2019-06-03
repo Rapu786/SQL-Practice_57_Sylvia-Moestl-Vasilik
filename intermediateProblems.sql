@@ -61,8 +61,24 @@ AVG(Freight) AS AverageFreight,
 ShipCountry 
 FROM Orders
 GROUP BY ShipCountry
-ORDER BY AVG(Freight)desc 
+ORDER BY AVG(Freight) DESC
 OFFSET 0 ROWS FETCH NEXT 3 ROWS ONLY;
 
+SELECT 
+TOP(3) AVG(Freight) AS AverageFreight, 
+ShipCountry 
+FROM Orders
+GROUP BY ShipCountry
+ORDER BY AVG(Freight) DESC;
+
+--26.High Freight charges-2015
+
+SELECT 
+TOP(3) AVG(Freight) AS AverageFreight, 
+ShipCountry 
+FROM Orders
+WHERE YEAR(OrderDate)=2015  --*imp
+GROUP BY ShipCountry
+ORDER BY AVG(Freight) DESC;
 
 
