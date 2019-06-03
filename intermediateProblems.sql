@@ -39,4 +39,18 @@ FROM Products
 WHERE (UnitsInStock+UnitsOnOrder) <= ReorderLevel
 AND Discontinued=0;
 
+--24.Customer list by region
+--List of all customer sorter by region
+--Customers with no region(null) to be at the end,instaed of the top
+--Within the same region, companies shoub be sorted by customerID
+
+SELECT 
+CustomerID, 
+CompanyName, 
+Region,
+CASE WHEN Region is NULL THEN 1 ELSE 0 END AS isNULL
+FROM Customers
+ORDER BY isNull,Region;
+
+
 
