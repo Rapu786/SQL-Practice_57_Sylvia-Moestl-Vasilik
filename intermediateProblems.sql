@@ -52,5 +52,17 @@ CASE WHEN Region is NULL THEN 1 ELSE 0 END AS isNULL
 FROM Customers
 ORDER BY isNull,Region;
 
+--25. High Freight charges
+--Return the three ship countries with highest average freight overall,
+--in descending over by average freight
+
+SELECT 
+AVG(Freight) AS AverageFreight, 
+ShipCountry 
+FROM Orders
+GROUP BY ShipCountry
+ORDER BY AVG(Freight)desc 
+OFFSET 0 ROWS FETCH NEXT 3 ROWS ONLY;
+
 
 
