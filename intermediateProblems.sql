@@ -11,3 +11,10 @@ Inner JOIN Products b
 ON a.CategoryID = b.CategoryID
 GROUP BY a.CategoryName
 ORDER BY TotalProducts DESC;
+
+--21.Total Customers per country/city
+
+SELECT Country, City, Count(CustomerID) AS TotalCustomers
+FROM Customers
+Group BY Country,City
+Order By TotalCustomers DESC;
