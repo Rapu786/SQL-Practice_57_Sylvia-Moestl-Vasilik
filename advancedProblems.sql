@@ -1,12 +1,26 @@
 -- 32. High-value customers
 
-SELECT a.CustomerID, a.CompanyName, c.OrderID,SUM(b.UnitPrice * b.Quantity) AS TotalOrderAmount
+SELECT a.CustomerID, a.CompanyName, b.OrderID, SUM(C.UnitPrice * c.Quantity) AS TotalOrderAmount
 FROM Customers a
-Inner JOIN Orders c
-ON a.CustomerID = c.CustomerID
-INNER JOIN OrderDetails b
-ON b.OrderID = c.OrderID
-Where YEAR(c.OrderDate) = 2016
-GROUP BY a.CustomerID, a.CompanyName, c.OrderID
-HAVING SUM(Quantity * UnitPrice) > 10000
+Inner Join Orders b
+ON b.CustomerID = a.CustomerID
+Inner Join OrderDetails c
+ON c.OrderID = b.OrderID
+WHERE YEAR(b.OrderDate) = 2016
+GROUP BY a.CustomerID,a.CompanyName, b.OrderID
+HAVING SUM(c.UnitPrice * c.Quantity)>10000
 ORDER BY TotalOrderAmount DESC;
+
+--33.High-value customers- total orders
+
+SELECT a.CustomerID, a.CompanyName, SUM(C.UnitPrice * c.Quantity) AS TotalOrderAmount
+FROM Customers a
+Inner Join Orders b
+ON b.CustomerID = a.CustomerID
+Inner Join OrderDetails c
+ON c.OrderID = b.OrderID
+WHERE YEAR(b.OrderDate) = 2016
+GROUP BY a.CustomerID,a.CompanyName
+HAVING SUM(c.UnitPrice * c.Quantity)>15000
+ORDER BY TotalOrderAmount DESC;
+
