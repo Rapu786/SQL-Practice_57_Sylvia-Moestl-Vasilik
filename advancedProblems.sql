@@ -39,3 +39,22 @@ GROUP BY a.CustomerID,a.CompanyName
 HAVING SUM(C.UnitPrice * c.Quantity *(1-c.Discount))>10000
 ORDER BY Totals_with_discount DESC;
 
+
+--35. Month-end orders
+
+
+--Initial wrong quety would return any maximum date availble in the records rater than the exact last date.
+SELECT employeeID, OrderID, Orderdate
+FROM Orders
+Where OrderDate IN (Select MAX(OrderDate) FROM Orders GROUP BY MONTH(OrderDate),YEAR(OrderDate))
+ORDER BY EmployeeID,OrderDate;
+
+SELECT employeeID, OrderID, Orderdate
+FROM Orders
+Where OrderDate = EOMONTH(OrderDate)
+ORDER BY EmployeeID,OrderDate;
+
+SELECT employeeID, OrderID, Orderdate
+FROM Orders
+Where OrderDate = Last_Day(OrderDate)
+ORDER BY EmployeeID,OrderDate;
