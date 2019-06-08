@@ -58,3 +58,12 @@ SELECT employeeID, OrderID, Orderdate
 FROM Orders
 Where OrderDate = Last_Day(OrderDate)
 ORDER BY EmployeeID,OrderDate;
+
+--36 Orders with many line items
+
+SELECT TOP(10) OrderID, COUNT(ProductID) AS TotalOrderDetais
+FROM OrderDetails
+GROUP BY OrderID
+ORDER BY COUNT(ProductID)  DESC;
+
+
