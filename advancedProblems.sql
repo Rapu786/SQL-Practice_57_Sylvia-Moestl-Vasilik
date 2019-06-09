@@ -89,6 +89,18 @@ GROUP BY OrderID, Quantity
 HAVING Count(*)>1
 ORDER BY OrderID;
 
+--Doing 39 & 40 Later
+
+--41.Late Orders
+
+SELECT 
+OrderID, 
+OrderDate, 
+RequiredDate,
+ShippedDate
+FROM  Orders
+WHERE  ShippedDate >= RequiredDate
+ORDER  BY OrderID;
 
 
 
