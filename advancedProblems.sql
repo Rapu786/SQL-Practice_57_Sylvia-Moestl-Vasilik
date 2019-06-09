@@ -79,6 +79,16 @@ FROM Orders
 Order By Rand()
 Limit 10;
 
+--38.Orders-accidental double-entry
+
+SELECT 
+OrderID, Quantity
+FROM OrderDetails 
+WHERE Quantity >=60
+GROUP BY OrderID, Quantity
+HAVING Count(*)>1
+ORDER BY OrderID;
+
 
 
 
