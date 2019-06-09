@@ -102,6 +102,24 @@ FROM  Orders
 WHERE  ShippedDate >= RequiredDate
 ORDER  BY OrderID; 
 
+--42. Later orders- which employees ?
+
+
+SELECT 
+a.EmployeeID,
+a.LastName,
+COUNT(*) AS  TotalLateOrders
+FROM  Employees a
+Inner Join Orders b
+ON a.EmployeeID = b.EmployeeID
+WHERE  b.shippedDate >= b.RequiredDate
+GROUP BY a.EmployeeID,a.LastName
+ORDER BY COUNT(*) DESC;
+
+
+
+
+
 
 
 
