@@ -66,4 +66,20 @@ FROM OrderDetails
 GROUP BY OrderID
 ORDER BY COUNT(ProductID)  DESC;
 
+--37.Orders-random assortment
+
+SELECT TOP 2 percent OrderID 
+FROM Orders
+ORDER BY NewID();
+--Since 2% of 803 rows is 17, you'll get the first 17 records of the table
+	--MYSQL Version
+
+SELECT OrderID
+FROM Orders
+Order By Rand()
+Limit 10;
+
+
+
+
 
