@@ -59,3 +59,12 @@ FROM ProductCostHistory
 WHERE '2014-04-15' BETWEEN StartDate AND IsNull(EndDate, GETDATE())
 GROUP BY ProductID,StandardCost
 ORDER BY ProductID;
+
+--7. Product List Price : how many price changes ?
+
+SELECT 
+Format(StartDate,'yyyy/MM') AS ProdutListPriceMonth,
+COUNT(*) AS TotalRows
+FROM ProductListPriceHistory
+GROUP BY Format(StartDate,'yyyy/MM')
+ORDER BY ProdutListPriceMonth;
