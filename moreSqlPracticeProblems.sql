@@ -47,3 +47,15 @@ FROM ProductCostHistory
 WHERE StartDate <= '2012-04-15'
 AND EndDate >='2012-04-15'
 ORDER BY ProductID;
+
+--6.Product Cost On A Specific Date, Part 2
+-- It turns out that the answer to the above problem has a problem. Change the date to 2014-04-15. What are your results?
+--If you use the SQL from the answer above, and just change the date, you won't get the results you want.
+--Fix the SQL so it gives the correct results with the new date. Note that when the EndDate is null, that means that price is applicable into the future.
+
+SELECT ProductID
+,StandardCost
+FROM ProductCostHistory
+WHERE '2014-04-15' BETWEEN StartDate AND IsNull(EndDate, GETDATE())
+GROUP BY ProductID,StandardCost
+ORDER BY ProductID;
