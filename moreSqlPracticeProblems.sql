@@ -124,4 +124,4 @@ Where
 '2014-04-15' Between StartDate and IsNull(EndDate, getdate())
 -- Order By ProductID
 )
-Order by ProductID
+Order by ProductID;
