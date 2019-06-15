@@ -68,3 +68,34 @@ COUNT(*) AS TotalRows
 FROM ProductListPriceHistory
 GROUP BY Format(StartDate,'yyyy/MM')
 ORDER BY ProdutListPriceMonth;
+
+--8. Product List Price: months with no price changes?
+
+SELECT 
+Format(CAST(a.CalendarMonth AS DATE),'yyyy/MM') AS CalenderMonth,
+COUNT(*) AS TotalRows
+FROM Calendar a
+Left Join ProductListPriceHistory b
+ON a.CalendarMonth = b.StartDate
+GROUP BY Format(CAST(a.CalendarMonth AS DATE),'yyyy/MM')
+ORDER BY TotalRows;
+
+
+--10. Products without a list price history
+
+SELECT ProductID, 
+ProductName
+FROM Product
+WHERE ProductID NOT IN 
+(SELECT 
+ ProductID FROM ProductListPriceHistory)
+ ORDER BY ProductID;
+
+	--Using left join
+
+SELECT a.ProductID, a.ProductName
+FROM Product a
+Left Join ProductListPriceHistory b
+ON a.ProductID = b.ProductID
+WHERE b.ProductID IS NULL
+ORDER BY a.ProductID;
