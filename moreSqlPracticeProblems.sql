@@ -34,3 +34,16 @@ Inner Join Product c
 On a.ProductID = c.ProductID
 GROUP BY a.ProductID, c.ProductName
 ORDER BY ProductID;
+
+-- 5.Product cost on a specific date
+
+SELECT ProductID, StandardCost
+FROM ProductCostHistory
+WHERE '2012-04-15' BETWEEN StartDate AND EndDate
+ORDER BY ProductID;
+
+SELECT ProductID,standardCost
+FROM ProductCostHistory
+WHERE StartDate <= '2012-04-15'
+AND EndDate >='2012-04-15'
+ORDER BY ProductID;
