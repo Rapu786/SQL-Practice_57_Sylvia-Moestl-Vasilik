@@ -81,6 +81,16 @@ GROUP BY Format(CAST(a.CalendarMonth AS DATE),'yyyy/MM')
 ORDER BY TotalRows;
 
 
+--9. Current list price of every product
+
+SELECT a.ProductID, b.ListPrice
+FROM Product a
+Inner Join ProductListPriceHistory b
+On a.ProductID = b.ProductID
+WHERE b.EndDate IS NULL
+GROUP BY a.ProductID,b.ListPrice
+ORDER BY a.ProductID;
+
 --10. Products without a list price history
 
 SELECT ProductID, 
@@ -99,3 +109,4 @@ Left Join ProductListPriceHistory b
 ON a.ProductID = b.ProductID
 WHERE b.ProductID IS NULL
 ORDER BY a.ProductID;
+
