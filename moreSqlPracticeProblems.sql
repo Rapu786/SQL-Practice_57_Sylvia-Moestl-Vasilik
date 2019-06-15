@@ -110,3 +110,18 @@ ON a.ProductID = b.ProductID
 WHERE b.ProductID IS NULL
 ORDER BY a.ProductID;
 
+-- 11. Product cost on a specific date, part 3
+Select
+DISTINCT ProductID
+From ProductCostHistory
+Where
+ProductID not in (
+Select
+ProductID
+-- ,StandardCost
+From ProductCostHistory
+Where
+'2014-04-15' Between StartDate and IsNull(EndDate, getdate())
+-- Order By ProductID
+)
+Order by ProductID
