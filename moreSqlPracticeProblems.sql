@@ -15,3 +15,13 @@ COUNT(*) AS TotalOrders
 FROM SalesOrderHeader
 GROUP BY CustomerID
 ORDER BY TotalOrders DESC;
+
+--3.Products with first and last order date 
+
+SELECT a.ProductID, MIN(CAST(b.OrderDate AS DATE)) AS FirstOrder , Max(CAST(b.OrderDate AS DATE)) AS LastOrder
+FROM SalesOrderDetail a
+Inner Join SalesOrderHeader b
+ON a.SalesOrderID = b.SalesOrderID
+GROUP BY a.ProductID
+ORDER BY ProductID;
+
