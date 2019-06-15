@@ -125,3 +125,33 @@ Where
 -- Order By ProductID
 )
 Order by ProductID;
+
+-- 12. Products with multiple current list price records
+
+SELECT 
+ProductID 
+FROM ProductListPriceHistory
+WHERE EndDate IS NULL
+GROUP BY ProductID 
+HAVING COUNT(ProductID)>1;
+
+--13. Products with their first and last order date, including name and subcategory
+
+SELECT 
+a.ProductID, 
+a.ProductName, 
+d.Name AS ProductSubCategoryName,
+MIN(CAST(c.OrderDate AS DATE )) AS FirstOrder,
+MAX(CAST(c.OrderDate AS DATE )) AS LastOrder
+FROM Product a
+Left Join SalesOrderDetail b
+ON a.ProductID = b.ProductID
+Left Join SalesOrderHeader c
+ON c.SalesOrderID = b.SalesOrderID
+Left Join ProductCategory d
+ON a.ProductSubcategoryID = d.ProductCategoryID
+GROUP BY 
+a.ProductID, 
+a.ProductName, 
+d.Name
+ORDER BY a.ProductName;
